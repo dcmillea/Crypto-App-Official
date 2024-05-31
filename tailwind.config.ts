@@ -13,6 +13,16 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        'deep-purple': "#1E1932",
+        'grey-nav-text': "#D1D1D1",
+        'dark-white-background': "#FFFFFF40",
+        'crypto-red': "#FE2264",
+        'crypto-green': "#01F1E3",
+      },
+      fontFamily: {
+        body: ["Space+Grotesk"]
+      },
     },
   },
   plugins: [],

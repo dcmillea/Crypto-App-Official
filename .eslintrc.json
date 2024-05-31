@@ -20,7 +20,8 @@
 
   "settings": {
     "react": {
-      "version": "detect"
+      "version": "detect",
+      "css.lint.unknownAtRules": "ignore"
     }
   }
 }

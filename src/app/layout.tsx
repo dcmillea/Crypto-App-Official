@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 // My imports
 import Link from "next/link";
+// import NavBar from "./components/navbar/navedBar";
+import NavBar from "./components/navbar/navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const spaceGroteskFont = Space_Grotesk({
+  subsets: ["latin"],
+});
+
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,8 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}
-      <div>
+      <body className={spaceGroteskFont.className}>
+        <NavBar />
+        <div>
           <Link href="/home">Home</Link>
           <br />
           <Link href="/portfolio">Portfolio</Link>
@@ -28,6 +36,7 @@ export default function RootLayout({
           <Link href="/converter">Converter</Link>
           <br />
         </div>
+        {children}
       </body>
     </html>
   );

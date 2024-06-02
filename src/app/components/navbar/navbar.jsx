@@ -64,7 +64,11 @@ const NavBar = () => {
   }, []);
 
   return (
-    <div className="m-0 flex h-10 w-auto items-center justify-center bg-deep-purple align-middle">
+    <div
+      className="left-0 right-0 
+    top-0 m-0 flex h-10 w-auto items-center justify-center border-b-2 border-light-purple 
+    bg-primary-purple pb-7 pt-7 align-middle"
+    >
       {data && !isLoading && !hasError && (
         <div className="flex w-9/12 items-center justify-evenly">
           <NavBarItem

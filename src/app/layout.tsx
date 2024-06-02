@@ -4,9 +4,11 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 // My imports
+import { Providers } from "./providers";
 import Link from "next/link";
-// import NavBar from "./components/navbar/navedBar";
-import NavBar from "./components/navbar/navbar";
+// import NavBar from "./components/navbar/navbar";
+// import SecondaryNavBar from "./components/secondaryNavbar/secondaryNavBar";
+import PrimaryNavbar from "./components/navbar/primaryNavbar/primaryNavbar";
 
 const spaceGroteskFont = Space_Grotesk({
   subsets: ["latin"],
@@ -26,17 +28,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={spaceGroteskFont.className}>
-        <NavBar />
-        <div>
-          <Link href="/home">Home</Link>
-          <br />
-          <Link href="/portfolio">Portfolio</Link>
-          <br />
-          <Link href="/converter">Converter</Link>
-          <br />
-        </div>
-        {children}
+      <body className={`${spaceGroteskFont.className}`}>
+        <Providers>
+          <PrimaryNavbar />
+          <div className="flex h-screen items-center justify-center border-2 border-lime-300 bg-white-muted bg-no-repeat dark:bg-main-dark-purple">
+            <div className="flex w-11/12 max-w-screen-xl flex-col items-center justify-center border-2 border-white">
+              <br />
+              <div>
+                <Link href="/home">Home</Link>
+                <br />
+                <Link href="/portfolio">Portfolio</Link>
+                <br />
+                <Link href="/converter">Converter</Link>
+              </div>
+              <br />
+            </div>
+          </div>
+          {children}
+        </Providers>
       </body>
     </html>
   );

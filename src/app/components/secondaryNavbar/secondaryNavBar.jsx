@@ -1,13 +1,8 @@
-"use client";
-
 import Image from "next/image";
 import { ThemeSwitch } from "../themeSwitch/ThemeSwitch";
+
 import MainCompanyLogo from "../../images/CompanyLogoMain.png";
-import PageSwitch from "./pageSwitch";
-// import homeIcon from "../../images/home-2.png";
-import homeIconGreyed from "../../images/home_greyed.png";
-import portfolioIcon from "../../images/layerBright.png";
-// import portfolioIcon from "../../images/Layers.png";
+import PageSelection from "./pageSelection";
 import SearchBar from "./searchBar";
 import CurrencySwitcher from "./currencySwitcher";
 
@@ -35,10 +30,7 @@ const SecondaryNavBar = () => {
               Logoispm
             </div>
           </div>
-          <div className=" mr-8 flex w-5/12 items-center justify-between">
-            <PageSwitch img={homeIconGreyed} text="Home" />
-            <PageSwitch img={portfolioIcon} text="Portfolio" />
-          </div>
+          <PageSelection />
         </div>
         <div className="flex w-6/12 items-center justify-end">
           <SearchBar />

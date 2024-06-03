@@ -6,8 +6,6 @@ import "./globals.css";
 // My imports
 import { Providers } from "./providers";
 import Link from "next/link";
-// import NavBar from "./components/navbar/navbar";
-// import SecondaryNavBar from "./components/secondaryNavbar/secondaryNavBar";
 import PrimaryNavbar from "./components/navbar/primaryNavbar/primaryNavbar";
 
 const spaceGroteskFont = Space_Grotesk({
@@ -27,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${spaceGroteskFont.className}`}>
         <Providers>
           <PrimaryNavbar />

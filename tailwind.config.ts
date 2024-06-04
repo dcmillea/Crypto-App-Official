@@ -39,6 +39,18 @@ const config: Config = {
       fontFamily: {
         body: ["Space+Grotesk"]
       },
+      animation: {  
+        dropDownIn: 'dropDownMenu 0.3s ease-in-out forwards',
+        dropDownOut: 'dropDownMenu 0.3s ease-in-out reverse',
+      },
+      keyframes: {
+        dropDownMenu: {
+          // '0%, 100%': { transform: 'translateY(0px)' },
+          // '50%': { transform: 'translateY(20px)' },
+          'from': {transform: 'scale(0) translateY(-175px)', opacity: '0'},
+          'to': {transform: 'scale(1) translateY(0px)', opacity: '1'},
+        }
+      },
     },
   },
   plugins: [],

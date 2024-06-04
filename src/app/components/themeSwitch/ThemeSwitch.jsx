@@ -22,7 +22,7 @@ export function ThemeSwitch() {
   };
 
   return (
-    <div className="mr-1 flex h-10 w-10 items-center justify-center rounded-md border-border-small border-light-purple bg-darker-white-40 dark:bg-purple-muted">
+    <div className="mr-1 flex h-10 w-10 cursor-pointer items-center justify-center rounded-md border-border-small border-light-purple bg-darker-white-40 dark:bg-purple-muted">
       <div className="flex h-7 w-7 items-center justify-center">
         <Image
           className="hidden dark:block"
@@ -49,8 +49,6 @@ export function ThemeSwitch() {
           onClick={handleClick}
         />
       </div>
-      {/* <button className="mr-4" onClick={() => setTheme("light")}></button>
-      <button onClick={() => setTheme("dark")}>CLICK FOR DARK MODE</button> */}
     </div>
   );
 }

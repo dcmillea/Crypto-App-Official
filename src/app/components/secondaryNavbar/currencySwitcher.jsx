@@ -6,9 +6,13 @@ import downArrow from "../../images/Down (Small).png";
 import downArrowDark from "../../images/downArrow_dark.png";
 import Image from "next/image";
 
+import { useGlobalContext } from "@/app/context/store";
+
 import { useState, useEffect, useRef } from "react";
 
 const CurrencySwitcher = () => {
+  const { setCurrencyId } = useGlobalContext();
+
   const [showDropDown, setShowDropDown] = useState(false);
   const [currencyList, setCurrencyList] = useState([
     {
@@ -33,6 +37,7 @@ const CurrencySwitcher = () => {
     },
   ]);
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
+  const [isMounted, setIsMounted] = useState(false);
   const dropDownMenuRef = useRef(null);
 
   useEffect(() => {
@@ -43,6 +48,37 @@ const CurrencySwitcher = () => {
     };
     document.addEventListener("mousedown", handleMouseClickOff);
   });
+
+  useEffect(() => {
+    if (isMounted) {
+      window.localStorage.setItem(
+        "CURRENT_SELECTED_CURRENCY",
+        JSON.stringify(selectedCurrency),
+      );
+      const newList = currencyList.map((el) => {
+        if (el.name === selectedCurrency) {
+          el.isSelected = true;
+          setCurrencyId(el);
+        } else {
+          el.isSelected = false;
+        }
+        return el;
+      });
+      setCurrencyList(newList);
+    }
+  }, [selectedCurrency, isMounted]);
+
+  useEffect(() => {
+    const locallyStoredCurrency = window.localStorage.getItem(
+      "CURRENT_SELECTED_CURRENCY",
+    );
+    const value = locallyStoredCurrency
+      ? JSON.parse(locallyStoredCurrency)
+      : "USD";
+    setSelectedCurrency(value);
+    setIsMounted(true);
+    setCurrencyId(value);
+  }, []);
 
   const handleDropDownClick = () => {
     setShowDropDown(!showDropDown);
@@ -80,27 +116,11 @@ const CurrencySwitcher = () => {
         {selectedCurrency}
       </div>
       <div className="flex h-4 w-4 items-center justify-center">
-        <Image
-          className="hidden dark:block"
-          src={downArrow}
-          width={0}
-          height={0}
-          alt="downArrow"
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
-        />
+        <Image className="hidden dark:block" src={downArrow} alt="downArrow" />
         <Image
           className="block dark:hidden"
           src={downArrowDark}
-          width={0}
-          height={0}
           alt="downArow"
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
         />
       </div>
       {showDropDown && (

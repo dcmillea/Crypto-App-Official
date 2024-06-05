@@ -7,6 +7,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import Link from "next/link";
 import PrimaryNavbar from "./components/navbar/primaryNavbar/primaryNavbar";
+import { GlobalContextProvider } from "./context/store";
 
 const spaceGroteskFont = Space_Grotesk({
   subsets: ["latin"],
@@ -27,23 +28,25 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${spaceGroteskFont.className}`}>
-        <Providers>
-          <PrimaryNavbar />
-          <div className="flex h-screen items-center justify-center border-2 border-lime-300 bg-white-muted bg-no-repeat dark:bg-main-dark-purple">
-            <div className="flex w-11/12 max-w-screen-xl flex-col items-center justify-center border-2 border-white">
-              <br />
-              <div>
-                <Link href="/home">Home</Link>
+        <GlobalContextProvider>
+          <Providers>
+            <PrimaryNavbar />
+            <div className="flex h-screen items-center justify-center border-2 border-lime-300 bg-white-muted bg-no-repeat dark:bg-main-dark-purple">
+              <div className="flex w-11/12 max-w-screen-xl flex-col items-center justify-center border-2 border-white">
                 <br />
-                <Link href="/portfolio">Portfolio</Link>
+                <div>
+                  <Link href="/home">Home</Link>
+                  <br />
+                  <Link href="/portfolio">Portfolio</Link>
+                  <br />
+                  <Link href="/converter">Converter</Link>
+                </div>
                 <br />
-                <Link href="/converter">Converter</Link>
               </div>
-              <br />
             </div>
-          </div>
-          {children}
-        </Providers>
+            {children}
+          </Providers>
+        </GlobalContextProvider>
       </body>
     </html>
   );

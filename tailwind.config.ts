@@ -29,6 +29,8 @@ const config: Config = {
         'white-muted': '#F3F5F9',
         'crypto-red': "#FE2264",
         'crypto-green': "#01F1E3",
+        'btc-orange': '#F7931A',
+        'eth-blue': '#627EEA',
       },
       borderWidth: {
         'border-small': '0.5px'

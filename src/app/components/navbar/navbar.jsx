@@ -147,37 +147,49 @@ const NavBar = () => {
   return (
     <div
       className="left-0 right-0 
-    top-0 m-0 flex h-10 w-auto items-center justify-center border-b-2 border-light-purple 
-    bg-primary-purple pb-7 pt-7 align-middle"
+    top-0 m-0 flex h-10 items-center justify-center border-b-2 border-light-purple bg-primary-purple 
+    pb-7 pt-7 align-middle sm:w-auto"
     >
       {data && !hasError && !isLoading && (
-        <div className="flex w-9/12 items-center justify-evenly">
-          <NavBarItem
-            text="Coins"
-            amount={data.data.active_cryptocurrencies}
-            img={lightningPNG}
-          />
-          <NavBarItem
-            text="Exchange"
-            amount={data.data.markets}
-            img={exchangePNG}
-          />
-          <NavBarMarketCapItem
-            text={dollarAmountLetter}
-            amount={marketCap}
-            isMarketUp={isMarketCapUp}
-          />
-          <NavBarMoneyBar amount={`$${volume}`} percent={volumePercentage} />
-          <NavBarCoinVolumeItem
-            amount={Math.round(data.data.market_cap_percentage.btc)}
-            img={bitcoinPNG}
-            color="#F7931A"
-          />
-          <NavBarCoinVolumeItem
-            amount={Math.round(data.data.market_cap_percentage.eth)}
-            img={ethereum}
-            color="#627EEA"
-          />
+        <div className="flex w-full max-w-screen-xl items-center justify-evenly sm:w-9/12">
+          <div className="hidden sm:block">
+            <NavBarItem
+              text="Coins"
+              amount={data.data.active_cryptocurrencies}
+              img={lightningPNG}
+            />
+          </div>
+          <div className="hidden sm:block">
+            <NavBarItem
+              text="Exchange"
+              amount={data.data.markets}
+              img={exchangePNG}
+            />
+          </div>
+          <div className="hidden sm:block">
+            <NavBarMarketCapItem
+              text={dollarAmountLetter}
+              amount={marketCap}
+              isMarketUp={isMarketCapUp}
+            />
+          </div>
+          <div>
+            <NavBarMoneyBar amount={`$${volume}`} percent={volumePercentage} />
+          </div>
+          <div>
+            <NavBarCoinVolumeItem
+              amount={Math.round(data.data.market_cap_percentage.btc)}
+              img={bitcoinPNG}
+              color="#F7931A"
+            />
+          </div>
+          <div className="mr-2 sm:mr-0">
+            <NavBarCoinVolumeItem
+              amount={Math.round(data.data.market_cap_percentage.eth)}
+              img={ethereum}
+              color="#627EEA"
+            />
+          </div>
         </div>
       )}
     </div>

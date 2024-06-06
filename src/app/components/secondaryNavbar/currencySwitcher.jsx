@@ -102,9 +102,9 @@ const CurrencySwitcher = () => {
     <div
       ref={dropDownMenuRef}
       onClick={handleDropDownClick}
-      className="mr-5 flex h-10 w-2/12 cursor-pointer items-center justify-evenly rounded-md border-border-small border-light-purple bg-darker-white-40 dark:bg-main-dark-purple"
+      className="mr-5 flex h-10 w-2/12 min-w-24 cursor-pointer items-center justify-evenly rounded-md border-border-small border-light-purple bg-darker-white-40 dark:bg-main-dark-purple"
     >
-      <div className="flex h-6 w-6 items-center justify-center">
+      <div className="hidden h-6 w-6 items-center justify-center sm:flex">
         <Image className="hidden dark:block" src={moneyIcon} alt="moneyIcon" />
         <Image
           className="block dark:hidden"

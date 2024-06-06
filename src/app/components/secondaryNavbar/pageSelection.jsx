@@ -27,7 +27,7 @@ const PageSelection = () => {
     }
   };
   return (
-    <div className=" mr-8 flex w-5/12 items-center justify-between">
+    <div className="mr-8 flex w-full items-center justify-between">
       <div className="hidden dark:block">
         <PageSwitch
           handlePageSwitch={handlePageSwitch}

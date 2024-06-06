@@ -83,35 +83,3 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
-
-{
-  /* <div className="relative mr-5 flex w-6/12">
-      <div className="absolute left-2 top-1.5 mr-2 flex h-7 w-7 items-center justify-center">
-        <Image
-          className="hidden dark:block"
-          src={searchIcon}
-          alt="companyLogo"
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
-        />
-        <Image
-          className="block dark:hidden"
-          src={darkSearchIcon}
-          alt="companyLogo"
-          style={{
-            width: "100%",
-            height: "100%",
-          }}
-        />
-      </div>
-      <div className="hidden w-full sm:block">
-        <input
-          className="h-10 w-full rounded-md border-border-small border-light-purple bg-darker-white-40 pl-14 text-light-purple-text outline-none dark:bg-main-dark-purple dark:text-grey-nav-text"
-          type="search"
-          placeholder="Search"
-        />
-      </div>
-    </div> */
-}

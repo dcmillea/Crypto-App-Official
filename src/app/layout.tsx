@@ -5,8 +5,12 @@ import "./globals.css";
 
 // My imports
 import { Providers } from "./providers";
-import Link from "next/link";
+
+// Nav bars for desktop and mobile
 import PrimaryNavbar from "./components/navbar/primaryNavbar/primaryNavbar";
+import MobileNavBar from "./components/navbar/mobileNavbar/mobileNavBar";
+
+// For globally shared currencies
 import { GlobalContextProvider } from "./context/store";
 
 const spaceGroteskFont = Space_Grotesk({
@@ -31,20 +35,20 @@ export default function RootLayout({
         <GlobalContextProvider>
           <Providers>
             <PrimaryNavbar />
-            <div className="flex h-screen items-center justify-center border-2 border-lime-300 bg-white-muted bg-no-repeat dark:bg-main-dark-purple">
-              <div className="flex w-11/12 max-w-screen-xl flex-col items-center justify-center border-2 border-white">
-                <br />
-                <div>
-                  <Link href="/home">Home</Link>
+            <MobileNavBar />
+            <div className="flex items-center justify-center border-2 border-lime-300 bg-white-muted bg-no-repeat dark:bg-main-dark-purple">
+              <div className="h-screen w-11/12 max-w-screen-xl flex-col items-center justify-start border-2 border-white">
+                {children}
+                {/* <Link href="/home">Home</Link>
                   <br />
                   <Link href="/portfolio">Portfolio</Link>
                   <br />
-                  <Link href="/converter">Converter</Link>
-                </div>
-                <br />
+                  <Link href="/converter">Converter</Link> */}
               </div>
             </div>
-            {children}
+            {/* Add the nav bar for mobile devices, no need to remove
+                the <PrimaryNavbar /> that is located above
+            */}
           </Providers>
         </GlobalContextProvider>
       </body>

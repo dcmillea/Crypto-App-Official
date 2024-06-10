@@ -15,11 +15,7 @@ export default function CompareCoins() {
   const exitText = deviceType === "mobile" ? "Exit" : "Exit Comparison";
 
   const handleClick = () => {
-    if (isComparing) {
-      setIsComparing(false);
-    } else {
-      setIsComparing(true);
-    }
+    setIsComparing(!isComparing);
   };
 
   return (

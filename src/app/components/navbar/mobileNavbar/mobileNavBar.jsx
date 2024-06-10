@@ -6,7 +6,6 @@ import btcExchageIcon from "../../../images/bitcoin-convert.png";
 import portfolioIcon from "../../../images/layerBright.png";
 import Link from "next/link";
 
-// hooks
 import { useState } from "react";
 
 export default function MobileNavBar() {

@@ -1,3 +1,7 @@
+/*
+ * I Will use this hook in future, commented out for now
+ */
+
 // import { useState, useEffect } from "react";
 
 // function useCoinMarketDataFetch(url) {
@@ -37,5 +41,3 @@
 // }
 
 // export default useCoinMarketDataFetch;
-
-// I Will use this hook in future, commented out for now

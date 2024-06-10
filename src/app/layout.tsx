@@ -10,7 +10,6 @@ import { Providers } from "./providers";
 import PrimaryNavbar from "./components/navbar/primaryNavbar/primaryNavbar";
 import MobileNavBar from "./components/navbar/mobileNavbar/mobileNavBar";
 
-// For globally shared currencies
 import { GlobalContextProvider } from "./context/store";
 
 const spaceGroteskFont = Space_Grotesk({

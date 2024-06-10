@@ -13,13 +13,10 @@ function useDeviceType() {
       }
     }
 
-    // Initial check
     handleResize();
 
-    // Event listener for window resize
     window.addEventListener("resize", handleResize);
 
-    // Cleanup function
     return () => {
       window.removeEventListener("resize", handleResize);
     };

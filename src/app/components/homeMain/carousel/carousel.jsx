@@ -98,7 +98,6 @@ const CarouselContainer = () => {
         setData(data);
         setHasError(false);
       } catch (error) {
-        // console.log("we have a problem!");
         setHasError(true);
         setIsLoading(false);
       }

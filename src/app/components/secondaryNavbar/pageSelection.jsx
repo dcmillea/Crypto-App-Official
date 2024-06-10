@@ -13,6 +13,7 @@ import lighPortfolioIconSelected from "../../images/layersStack.png";
 
 import PageSwitch from "./pageSwitch";
 import { useState } from "react";
+import Link from "next/link";
 
 const PageSelection = () => {
   const [isHomePageSelected, setIsHomePageSelected] = useState(true);
@@ -28,7 +29,7 @@ const PageSelection = () => {
   };
   return (
     <div className="mr-8 flex w-full items-center justify-between">
-      <div className="hidden dark:block">
+      <Link href="/" className="hidden dark:block">
         <PageSwitch
           handlePageSwitch={handlePageSwitch}
           isSelected={isHomePageSelected}
@@ -36,8 +37,8 @@ const PageSelection = () => {
           imgUnSelected={darkHomeIconUnSelected}
           text="Home"
         />
-      </div>
-      <div className="block dark:hidden">
+      </Link>
+      <Link href="/" className="block dark:hidden">
         <PageSwitch
           handlePageSwitch={handlePageSwitch}
           isSelected={isHomePageSelected}
@@ -45,8 +46,8 @@ const PageSelection = () => {
           imgUnSelected={lightHomeIconUnSelected}
           text="Home"
         />
-      </div>
-      <div className="hidden dark:block">
+      </Link>
+      <Link href="/portfolio" className="hidden dark:block">
         <PageSwitch
           handlePageSwitch={handlePageSwitch}
           isSelected={!isHomePageSelected}
@@ -54,8 +55,8 @@ const PageSelection = () => {
           imgUnSelected={portfolioIcon}
           text="Portfolio"
         />
-      </div>
-      <div className="block dark:hidden">
+      </Link>
+      <Link href="/portfolio" className="block dark:hidden">
         <PageSwitch
           handlePageSwitch={handlePageSwitch}
           isSelected={!isHomePageSelected}
@@ -63,7 +64,7 @@ const PageSelection = () => {
           imgUnSelected={lighPortfolioIconUnSelected}
           text="Portfolio"
         />
-      </div>
+      </Link>
     </div>
   );
 };

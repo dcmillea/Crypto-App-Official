@@ -4,37 +4,31 @@ import Image from "next/image";
 import searchIcon from "../../images/fluent_search-24-filled.png";
 import darkSearchIcon from "../../images/search_dark.png";
 import { useEffect, useRef, useState } from "react";
+import useDeviceType from "@/app/hooks/getDeviceScrSize/getDeviceScreenSize";
 
 const SearchBar = () => {
-  const [isMobile, setIsMobile] = useState(false);
   const [userIsSearching, setUserIsSearching] = useState(false);
   const searchBoxRef = useRef(null);
   const searchInputRef = useRef(null);
-
-  // Typically in all web applications the window is defined
-  // But it is not doing so here, so you could get thrown
-  // errors for this, but just note during build you will
-  // not get the window is undefined
-  // console.log(window.innerWidth);
-  if (typeof window !== "undefined") {
-    window.onload = () => {
-      setIsMobile(true);
-    };
-  }
+  const deviceType = useDeviceType();
+  const isMobile = deviceType === "mobile";
 
   useEffect(() => {
     const handleMouseClick = (e) => {
-      if (!searchBoxRef.current.contains(e.target)) {
+      if (!searchBoxRef.current?.contains(e.target)) {
         setUserIsSearching(false);
-      } else {
+      } else if (searchBoxRef.current?.contains(e.target)) {
         setUserIsSearching(true);
-        searchInputRef.current.focus();
+        if (searchInputRef.current) {
+          searchInputRef.current.focus();
+        }
       }
     };
     document.addEventListener("mousedown", handleMouseClick);
   });
 
   const handleClick = () => {
+    setUserIsSearching(true);
     searchInputRef.current.focus();
   };
 
@@ -69,7 +63,7 @@ const SearchBar = () => {
         />
       </div>
       <div
-        className={`ml-2 w-9/12 sm:block ${isMobile && !userIsSearching ? "hidden" : "block"}`}
+        className={`ml-2 w-9/12 ${isMobile && !userIsSearching ? "hidden" : "block"}`}
       >
         <input
           ref={searchInputRef}

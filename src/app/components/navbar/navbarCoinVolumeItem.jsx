@@ -6,7 +6,7 @@ const NavBarCoinVolumeItem = ({ amount, img, color }) => {
     <div className="flex flex-row justify-evenly align-middle">
       <div className="flex flex-row justify-between">
         <div className="border-3 flex h-5 w-5 items-center justify-center sm:h-6 sm:w-6">
-          <Image src={img} alt="coinLogo" />
+          <Image src={img} width={100} height={100} alt="coinLogo" />
         </div>
       </div>
       <div className="ml-2 mr-2 text-sm sm:ml-4 sm:mr-4 sm:text-base">

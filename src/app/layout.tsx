@@ -6,6 +6,9 @@ import "./globals.css";
 // My imports
 import { Providers } from "./providers";
 
+// Redux
+import StoreProvider from "./storeProvider";
+
 // Nav bars for desktop and mobile
 import PrimaryNavbar from "./components/navbar/primaryNavbar/primaryNavbar";
 import MobileNavBar from "./components/navbar/mobileNavbar/mobileNavBar";
@@ -31,25 +34,24 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${spaceGroteskFont.className}`}>
-        <GlobalContextProvider>
-          <Providers>
-            <PrimaryNavbar />
-            <MobileNavBar />
-            <div className="flex items-center justify-center border-2 border-lime-300 bg-white-muted bg-no-repeat dark:bg-main-dark-purple">
-              <div className="h-screen w-11/12 max-w-screen-xl flex-col items-center justify-start border-2 border-white">
-                {children}
-                {/* <Link href="/home">Home</Link>
+        <StoreProvider>
+          <GlobalContextProvider>
+            <Providers>
+              <PrimaryNavbar />
+              <MobileNavBar />
+              <div className="flex items-center justify-center border-2 border-lime-300 bg-white-muted bg-no-repeat dark:bg-main-dark-purple">
+                <div className="w-11/12 max-w-screen-xl flex-col items-center justify-start border-2 border-white">
+                  {children}
+                  {/* <Link href="/home">Home</Link>
                   <br />
                   <Link href="/portfolio">Portfolio</Link>
                   <br />
                   <Link href="/converter">Converter</Link> */}
+                </div>
               </div>
-            </div>
-            {/* Add the nav bar for mobile devices, no need to remove
-                the <PrimaryNavbar /> that is located above
-            */}
-          </Providers>
-        </GlobalContextProvider>
+            </Providers>
+          </GlobalContextProvider>
+        </StoreProvider>
       </body>
     </html>
   );

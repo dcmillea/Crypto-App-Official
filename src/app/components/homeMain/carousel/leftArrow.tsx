@@ -32,9 +32,4 @@ const SamplePrevArrow: React.FC<SamplePrevArrowProps> = ({
   );
 };
 
-// SamplePrevArrow.propTypes = {
-//   style: PropTypes.object.isRequired,
-//   onClick: PropTypes.func.isRequired,
-// };
-
 export default SamplePrevArrow;

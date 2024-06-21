@@ -30,9 +30,4 @@ const SampleNextArrow: React.FC<SampleNextArrowProps> = ({
   );
 };
 
-// SampleNextArrow.propTypes = {
-//   style: PropTypes.object.isRequired,
-//   onClick: PropTypes.func.isRequired,
-// };
-
 export default SampleNextArrow;

@@ -15,8 +15,3 @@ export default function HomePageTab({ text, isSelected }) {
     </div>
   );
 }
-
-// HomePageTab.propTypes = {
-//   text: PropTypes.string.isRequired,
-//   isSelected: PropTypes.bool.isRequired,
-// };

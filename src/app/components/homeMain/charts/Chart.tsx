@@ -119,16 +119,6 @@ const ChartContent: React.FC<{
                 strokeDasharray: "3 3",
               }}
             />
-            {/* <defs>
-              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#7474F2" stopOpacity={0.8} />
-                <stop offset="95%" stopColor="#7474F2" stopOpacity={0} />
-              </linearGradient>
-              <linearGradient id="colorBv" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#9D62D9" stopOpacity={1} />
-                <stop offset="95%" stopColor="#B374F2" stopOpacity={0.3} />
-              </linearGradient>
-            </defs> */}
             <defs>
               <linearGradient id="colorBv" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#9D62D9" stopOpacity={1} />

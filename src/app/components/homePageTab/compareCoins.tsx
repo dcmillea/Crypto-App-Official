@@ -17,14 +17,11 @@ export default function CompareCoins() {
     (state: RootState) => state.compareCoins.isComparingCoins,
   );
   const dispatch = useDispatch();
-
-  // const [isComparing, setIsComparing] = useState(false);
   const deviceType = useDeviceType();
   const imageSize = deviceType === "mobile" ? 20 : 25;
   const exitText = deviceType === "mobile" ? "Exit" : "Exit Comparison";
 
   const handleClick = () => {
-    // setIsComparing(!isComparing);
     dispatch(setIsComaringCoins(!isComparing));
   };
 

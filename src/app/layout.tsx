@@ -42,11 +42,6 @@ export default function RootLayout({
               <div className="flex items-center justify-center border-2 border-lime-300 bg-white-muted bg-no-repeat dark:bg-main-dark-purple">
                 <div className="w-11/12 max-w-screen-xl flex-col items-center justify-start border-2 border-white">
                   {children}
-                  {/* <Link href="/home">Home</Link>
-                  <br />
-                  <Link href="/portfolio">Portfolio</Link>
-                  <br />
-                  <Link href="/converter">Converter</Link> */}
                 </div>
               </div>
             </Providers>

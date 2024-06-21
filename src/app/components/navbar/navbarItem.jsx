@@ -1,5 +1,4 @@
 import Image from "next/image";
-// import PropTypes from "prop-types";
 
 const NavBarItem = ({ text, amount, img }) => {
   return (
@@ -20,11 +19,5 @@ const NavBarItem = ({ text, amount, img }) => {
     </div>
   );
 };
-
-// NavBarItem.propTypes = {
-//   amount: PropTypes.number.isRequired,
-//   img: PropTypes.node.isRequired,
-//   text: PropTypes.string.isRequired,
-// };
 
 export default NavBarItem;

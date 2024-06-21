@@ -4,8 +4,9 @@ import NavBarMarketCapItem from "./navbarMarketCapItem";
 import NavBarCoinVolumeItem from "./navbarCoinVolumeItem";
 import NavBarMoneyBar from "./navbarMoneyBar";
 
-// Global Context
-import { useGlobalContext } from "@/app/context/store";
+// Redux
+import { useSelector } from "react-redux";
+import { RootState } from "../../state/store";
 
 // Images below
 import lightningPNG from "../../images/circle(10x).png";
@@ -17,17 +18,20 @@ import ethereum from "../../images/ETH_icon.png";
 import { useState, useEffect } from "react";
 
 const NavBar = () => {
-  const { currencyId, setCurrencyId } = useGlobalContext();
+  const currency = useSelector((state: RootState) => state.currency.currency);
 
   const [data, setData] = useState(null);
-  const [marketCap, setMarketCap] = useState(0);
+  const [marketCap, setMarketCap] = useState("");
   const [volume, setVolume] = useState("");
-  const [volumePercentage, setVolumePercentage] = useState("");
-  const [isMarketCapUp, setIsMarketCapUp] = useState(null);
+  const [volumePercentage, setVolumePercentage] = useState(0);
+  const [isMarketCapUp, setIsMarketCapUp] = useState<boolean | null>(null);
+  /* eslint-disable no-unused-vars */
   const [hasError, setHasError] = useState(false);
+  /* eslint-disable no-unused-vars */
   const [isLoading, setIsLoading] = useState(false);
-  const [dollarAmountLetter, setDollarAmountLetter] = useState(0);
+  const [dollarAmountLetter, setDollarAmountLetter] = useState("");
 
+  // fetch data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -45,23 +49,12 @@ const NavBar = () => {
           options,
         );
         const result = await response.json();
-        const locallyStoredCurrency = window.localStorage.getItem(
-          "CURRENT_SELECTED_CURRENCY",
-        );
-        const value = locallyStoredCurrency
-          ? JSON.parse(locallyStoredCurrency)
-          : "USD";
-        setCurrencyId(value);
         setData(result);
-
         // check to see if market cap is up or down in last 24 hours:
         setIsMarketCapUp(result.data.market_cap_change_percentage_24h_usd >= 0);
-        assignVolume(value.toLowerCase());
-        assignMarketCap(value.toLowerCase());
         setIsLoading(false);
         setHasError(false);
       } catch (error) {
-        // console.log("we have a problem!");
         setHasError(true);
         setIsLoading(false);
       }
@@ -70,42 +63,32 @@ const NavBar = () => {
   }, []);
 
   useEffect(() => {
-    const locallyStoredCurrency = window.localStorage.getItem(
-      "CURRENT_SELECTED_CURRENCY",
-    );
-    const value = locallyStoredCurrency
-      ? JSON.parse(locallyStoredCurrency)
-      : "USD";
-    const valueLowerCase = value.toLowerCase();
-    setCurrencyId(valueLowerCase);
     if (data) {
-      assignMarketCap(valueLowerCase);
-      assignVolume(valueLowerCase);
+      assignMarketCap(currency.toLowerCase());
+      assignVolume(currency.toLowerCase());
     }
-    setHasError(false);
-    setIsLoading(false);
-  }, [currencyId]);
+  }, [data, currency]);
 
-  const assignMarketCap = (currencyKey) => {
-    const entries = Object.entries(data.data.total_market_cap);
+  const assignMarketCap = (currencyKey: string) => {
+    const entries = Object.entries((data as any).data.total_market_cap);
     entries.forEach(([key, value]) => {
       if (key === currencyKey) {
-        setDollarAmountLetter(getDollarAmountLetter(value));
-        setMarketCap(getMarketCapDecimalString(value));
+        setDollarAmountLetter(getDollarAmountLetter(value as number));
+        setMarketCap(getMarketCapDecimalString(value as number));
       }
     });
   };
 
-  const assignVolume = (currencyKey) => {
-    const entries2 = Object.entries(data.data.total_volume);
+  const assignVolume = (currencyKey: string) => {
+    const entries2 = Object.entries((data as any).data.total_volume);
     let totalVol = 0;
     let selectedVal = 0;
     entries2.forEach(([key, value]) => {
-      totalVol += value;
+      totalVol += value as number;
       if (key === currencyKey) {
-        selectedVal = value;
-        const decimalStr = getMarketCapDecimalString(value);
-        const letter = getDollarAmountLetter(value);
+        selectedVal = value as number;
+        const decimalStr = getMarketCapDecimalString(value as number);
+        const letter = getDollarAmountLetter(value as number);
         const finalStr = decimalStr + letter;
         setVolume(finalStr);
       }
@@ -115,7 +98,7 @@ const NavBar = () => {
     setVolumePercentage(percent);
   };
 
-  const getDollarAmountLetter = (dollarAmount) => {
+  const getDollarAmountLetter = (dollarAmount: number) => {
     let letter = "";
     const decimalNum = dollarAmount / 1000000000000;
     if (decimalNum > 0.9) {
@@ -130,7 +113,7 @@ const NavBar = () => {
     return letter;
   };
 
-  const getMarketCapDecimalString = (value) => {
+  const getMarketCapDecimalString = (value: number) => {
     const numberWithCommas = value.toLocaleString();
     const firstElement = numberWithCommas.split(",")[0];
     let finalStr = "";
@@ -150,19 +133,19 @@ const NavBar = () => {
     top-0 m-0 flex h-10 items-center justify-center border-b-2 border-light-purple bg-primary-purple 
     pb-7 pt-7 align-middle sm:w-auto"
     >
-      {data && !hasError && !isLoading && (
+      {data && (
         <div className="flex w-full max-w-screen-xl items-center justify-evenly sm:w-9/12">
           <div className="hidden sm:block">
             <NavBarItem
               text="Coins"
-              amount={data.data.active_cryptocurrencies}
+              amount={(data as any).data.active_cryptocurrencies}
               img={lightningPNG}
             />
           </div>
           <div className="hidden sm:block">
             <NavBarItem
               text="Exchange"
-              amount={data.data.markets}
+              amount={(data as any).data.markets}
               img={exchangePNG}
             />
           </div>
@@ -170,7 +153,7 @@ const NavBar = () => {
             <NavBarMarketCapItem
               text={dollarAmountLetter}
               amount={marketCap}
-              isMarketUp={isMarketCapUp}
+              isMarketUp={isMarketCapUp!}
             />
           </div>
           <div>
@@ -178,16 +161,18 @@ const NavBar = () => {
           </div>
           <div>
             <NavBarCoinVolumeItem
-              amount={Math.round(data.data.market_cap_percentage.btc)}
-              img={bitcoinPNG}
+              amount={Math.round((data as any).data.market_cap_percentage.btc)}
+              img={bitcoinPNG.src}
               color="#F7931A"
+              dimension={100}
             />
           </div>
           <div className="mr-2 sm:mr-0">
             <NavBarCoinVolumeItem
-              amount={Math.round(data.data.market_cap_percentage.eth)}
-              img={ethereum}
+              amount={Math.round((data as any).data.market_cap_percentage.eth)}
+              img={ethereum.src}
               color="#627EEA"
+              dimension={100}
             />
           </div>
         </div>

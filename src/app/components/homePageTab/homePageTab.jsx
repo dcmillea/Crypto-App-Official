@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 export default function HomePageTab({ text, isSelected }) {
   return (
     <div
@@ -15,8 +15,3 @@ export default function HomePageTab({ text, isSelected }) {
     </div>
   );
 }
-
-HomePageTab.propTypes = {
-  text: PropTypes.string.isRequired,
-  isSelected: PropTypes.bool.isRequired,
-};

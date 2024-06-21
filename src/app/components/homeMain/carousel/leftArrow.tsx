@@ -1,9 +1,18 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+import React from "react";
 import arrowIcon from "../../../images/arrow-right.png";
 import Image from "next/image";
 
-function SamplePrevArrow(props) {
-  const { style, onClick } = props;
+interface SamplePrevArrowProps {
+  onClick: () => void;
+  style?: React.CSSProperties;
+}
+
+const SamplePrevArrow: React.FC<SamplePrevArrowProps> = ({
+  onClick,
+  style,
+}) => {
+  // const { style, onClick } = props;
 
   return (
     <div className="relative cursor-pointer">
@@ -21,11 +30,6 @@ function SamplePrevArrow(props) {
       </div>
     </div>
   );
-}
-
-SamplePrevArrow.propTypes = {
-  style: PropTypes.object.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default SamplePrevArrow;

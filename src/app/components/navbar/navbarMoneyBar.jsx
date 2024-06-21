@@ -17,7 +17,7 @@ const NavBarMarketCapItem = ({ amount, percent }) => {
 };
 
 NavBarMarketCapItem.propTypes = {
-  amount: PropTypes.number.isRequired,
+  amount: PropTypes.string.isRequired,
   percent: PropTypes.number.isRequired,
 };
 

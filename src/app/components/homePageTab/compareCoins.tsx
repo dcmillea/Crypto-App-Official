@@ -5,17 +5,24 @@ import whiteCompareIcon from "../../images/u_comparison.png";
 import purpleCompareIcon from "../../images/compare_dark.png";
 import xCloseIcon from "../../images/x-close.png";
 import xClosePurpleIcon from "../../images/x-close-purp.png";
-import { useState } from "react";
 import useDeviceType from "../../hooks/getDeviceScrSize/getDeviceScreenSize";
 
+// Redux
+import { RootState } from "../../state/store";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsComaringCoins } from "@/app/state/compareCoin/compareCoinSlice";
+
 export default function CompareCoins() {
-  const [isComparing, setIsComparing] = useState(false);
+  const isComparing = useSelector(
+    (state: RootState) => state.compareCoins.isComparingCoins,
+  );
+  const dispatch = useDispatch();
   const deviceType = useDeviceType();
   const imageSize = deviceType === "mobile" ? 20 : 25;
   const exitText = deviceType === "mobile" ? "Exit" : "Exit Comparison";
 
   const handleClick = () => {
-    setIsComparing(!isComparing);
+    dispatch(setIsComaringCoins(!isComparing));
   };
 
   return (

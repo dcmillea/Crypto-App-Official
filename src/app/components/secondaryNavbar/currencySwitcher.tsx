@@ -6,12 +6,16 @@ import downArrow from "../../images/Down (Small).png";
 import downArrowDark from "../../images/downArrow_dark.png";
 import Image from "next/image";
 
-import { useGlobalContext } from "@/app/context/store";
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../state/store";
+import { changeCurrency } from "@/app/state/currency/currencySlice";
 
 import { useState, useEffect, useRef } from "react";
 
 const CurrencySwitcher = () => {
-  const { setCurrencyId } = useGlobalContext();
+  const currency = useSelector((state: RootState) => state.currency.currency);
+  const dispatch = useDispatch();
 
   const [showDropDown, setShowDropDown] = useState(false);
   const [currencyList, setCurrencyList] = useState([
@@ -36,29 +40,49 @@ const CurrencySwitcher = () => {
       isSelected: false,
     },
   ]);
-  const [selectedCurrency, setSelectedCurrency] = useState("USD");
-  const [isMounted, setIsMounted] = useState(false);
-  const dropDownMenuRef = useRef(null);
+  const dropDownMenuRef = useRef<HTMLDivElement>(null);
 
+  // if user clicks outside drop down menu, close it
   useEffect(() => {
-    const handleMouseClickOff = (e) => {
-      if (!dropDownMenuRef.current.contains(e.target)) {
+    const handleMouseClickOff = (e: any) => {
+      if (
+        dropDownMenuRef.current &&
+        !dropDownMenuRef.current.contains(e.target)
+      ) {
         setShowDropDown(false);
       }
     };
     document.addEventListener("mousedown", handleMouseClickOff);
   });
 
+  // once mounted, set the currency to local storage
   useEffect(() => {
-    if (isMounted) {
+    let newList;
+    if (localStorage.getItem("CURRENT_SELECTED_CURRENCY") !== null) {
+      const locallyStoredCurrency = window.localStorage.getItem(
+        "CURRENT_SELECTED_CURRENCY",
+      );
+      const value = locallyStoredCurrency
+        ? JSON.parse(locallyStoredCurrency)
+        : "USD";
+      newList = currencyList.map((el) => {
+        if (el.name === value) {
+          el.isSelected = true;
+          dispatch(changeCurrency(el.name));
+        } else {
+          el.isSelected = false;
+        }
+        return el;
+      });
+      setCurrencyList(newList);
+    } else {
       window.localStorage.setItem(
         "CURRENT_SELECTED_CURRENCY",
-        JSON.stringify(selectedCurrency),
+        JSON.stringify(currency),
       );
-      const newList = currencyList.map((el) => {
-        if (el.name === selectedCurrency) {
+      newList = currencyList.map((el) => {
+        if (el.name === currency) {
           el.isSelected = true;
-          setCurrencyId(el);
         } else {
           el.isSelected = false;
         }
@@ -66,29 +90,22 @@ const CurrencySwitcher = () => {
       });
       setCurrencyList(newList);
     }
-  }, [selectedCurrency, isMounted]);
-
-  useEffect(() => {
-    const locallyStoredCurrency = window.localStorage.getItem(
-      "CURRENT_SELECTED_CURRENCY",
-    );
-    const value = locallyStoredCurrency
-      ? JSON.parse(locallyStoredCurrency)
-      : "USD";
-    setSelectedCurrency(value);
-    setIsMounted(true);
-    setCurrencyId(value);
   }, []);
 
   const handleDropDownClick = () => {
     setShowDropDown(!showDropDown);
   };
 
-  const handleCurrencySelectClick = (id) => {
+  // set the currency on click
+  const handleCurrencySelectClick = (id: string) => {
     const newList = currencyList.map((el) => {
       if (el.name === id) {
         el.isSelected = true;
-        setSelectedCurrency(el.name);
+        dispatch(changeCurrency(el.name));
+        window.localStorage.setItem(
+          "CURRENT_SELECTED_CURRENCY",
+          JSON.stringify(el.name),
+        );
       } else {
         el.isSelected = false;
       }
@@ -113,7 +130,7 @@ const CurrencySwitcher = () => {
         />
       </div>
       <div className="text-text-currency-grey dark:text-text-currency-muted-white">
-        {selectedCurrency}
+        {currency.toUpperCase()}
       </div>
       <div className="flex h-4 w-4 items-center justify-center">
         <Image className="hidden dark:block" src={downArrow} alt="downArrow" />

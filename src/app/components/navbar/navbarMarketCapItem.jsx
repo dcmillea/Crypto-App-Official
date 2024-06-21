@@ -22,7 +22,7 @@ const NavBarMarketCapItem = ({ text, amount, isMarketUp }) => {
 };
 
 NavBarMarketCapItem.propTypes = {
-  amount: PropTypes.number.isRequired,
+  amount: PropTypes.string.isRequired,
   isMarketUp: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
 };

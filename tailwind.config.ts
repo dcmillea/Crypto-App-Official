@@ -17,6 +17,7 @@ const config: Config = {
         'primary-purple': "#1E1932",
         'main-dark-purple': "#13121A",
         'grey-nav-text': "#D1D1D1",
+        'light-grey-chart-text': '#B9B9BA',
         'bright-puprle': '#7c7cf2',
         'light-purple': "#6161D650",
         'light-purple-full': '#6161D6',
@@ -25,6 +26,7 @@ const config: Config = {
         'text-currency-grey-muted': '#42428640',
         'text-currency-grey-full': '#424286',
         'text-currency-muted-white': '#FFFFFF80',
+        'dark-blue-chart-bg': '#191932',
         'white-muted-50': '#FFFFFF50',
         'darker-white-full': '#CCCCFA',
         'darker-white-40': '#CCCCFA40',
@@ -37,8 +39,12 @@ const config: Config = {
         'white-muted': '#F3F5F9',
         'crypto-red': "#FE2264",
         'crypto-green': "#01F1E3",
+        'crypto-green-2': '#00B1A7',
         'btc-orange': '#F7931A',
         'eth-blue': '#627EEA',
+        'date-selection-grey': '#A7A7CC',
+        'date-selection-white': '#E4E4F0',
+        'date-selection-black': '#181825',
       },
       borderWidth: {
         'border-small': '0.5px'

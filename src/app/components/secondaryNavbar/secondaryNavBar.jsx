@@ -9,7 +9,7 @@ import CurrencySwitcher from "./currencySwitcher";
 const SecondaryNavBar = () => {
   return (
     <div
-      className="left-0 right-0 top-0 m-0
+      className="left-0 right-0 top-0 z-50 m-0
        flex h-10 w-auto items-center justify-center
        bg-white pb-7 pt-7 text-light-purple dark:bg-main-dark-purple
         dark:text-white sm:pb-10 sm:pt-10"

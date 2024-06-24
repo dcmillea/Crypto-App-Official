@@ -54,7 +54,7 @@ const CarouselItem: React.FC<IComponentProps> = ({
   }, []);
 
   return (
-    <div className={`${isMobile ? "h-10 w-20" : "w-60"}`}>
+    <div className={`${isMobile ? "z-0 h-10 w-20" : "z-0 w-60"}`}>
       <div
         onClick={(event) =>
           handleCarouselClick(event, data.id, data.name, data.abbreviation)

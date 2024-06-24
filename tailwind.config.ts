@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        // 'coinCard': '20px 300px 100px 75px 75px 75px 100px 100px 100px',
+        'coinCard': '1% 17% 8% 5% 5% 5% 14% 14% 14%',
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -38,7 +42,9 @@ const config: Config = {
         'dark-white-background': "#FFFFFF40",
         'white-muted': '#F3F5F9',
         'crypto-red': "#FE2264",
+        'crypto-red-trans': "#FE226450",
         'crypto-green': "#01F1E3",
+        'crypto-green-trans': "#01F1E350",
         'crypto-green-2': '#00B1A7',
         'btc-orange': '#F7931A',
         'eth-blue': '#627EEA',

@@ -154,24 +154,6 @@ const CoinList = () => {
           placeHolderArr.push(item);
         }
         setCoinList((prev) => [...prev, ...placeHolderArr]);
-        // We need:
-        // 1. Number --> i + 1
-        // 2. Icon --> image
-        // 3. Name --> name
-        // 4. Abv --> symbol
-        // 5. Price --> current_price
-        // 6. Price change 1 hour --> price_change_percentage_1h
-        // 7. Price change 24 hour --> price_change_percentage_24h
-        // 8. Price change 7 days -->
-        // ((sparkline_in_7d.price[0][0] -
-        // sparkline_in_7d.price[1][sparkline_in_7d.price[1].length - 1])
-        // / sparkline_in_7d.price[1][sparkline_in_7d.price[1].length - 1]) * 100
-        // 9. 24 hour volume / Market Cap -->
-        // (100 * total_volume) / market_cap
-        // 10. Circulating / Total Supply -->
-        // (100 * circulating_supply) / total_supply
-        // 11. Last 7d --> small chart (recharts): An object of arrays
-        // with 7 days and the list of prices
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log(error);
@@ -200,7 +182,7 @@ const CoinList = () => {
       <div className="border border-orange-400">
         <CoinItemCategories />
         {coinList.map((el) => {
-          return <CoinItem key={Math.random()} data={el} />;
+          return <CoinItem key={el.name} data={el} />;
         })}
       </div>
     </div>

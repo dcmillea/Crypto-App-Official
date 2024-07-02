@@ -1,6 +1,6 @@
 const CoinItemCategories = () => {
   return (
-    <div className="grid-cols-coinCard grid w-full items-center gap-x-8 pl-2 pr-2 text-sm">
+    <div className="grid  w-full grid-cols-coinCard items-center gap-x-8 pl-2 pr-2 text-sm text-text-currency-grey-full dark:text-grey-nav-text">
       <div className="ml-2">#</div>
       <div className="ml-2">Name</div>
       <div className="ml-2">Price</div>

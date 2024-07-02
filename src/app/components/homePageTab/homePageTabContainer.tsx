@@ -2,17 +2,25 @@
 
 import HomePageTab from "./homePageTab";
 
+// Redux
+import { useDispatch } from "react-redux";
+import { setCurrentPage } from "@/app/state/currentPage/pageSlice";
+
 // hooks
 import { useState } from "react";
 
 export default function HomePageTabContainer() {
+  const dispatch = useDispatch();
+
   const [isCoinTabSelected, setIsCoinTabSelected] = useState(true);
 
-  const handleClick = (name) => {
+  const handleClick = (name: string) => {
     if (name === "coins" && !isCoinTabSelected) {
       setIsCoinTabSelected(true);
+      dispatch(setCurrentPage("coinPage"));
     } else if (name === "converter" && isCoinTabSelected) {
       setIsCoinTabSelected(false);
+      dispatch(setCurrentPage("converter"));
     }
   };
 

@@ -40,6 +40,7 @@ const config: Config = {
         'bright-purple-border': '#7878FA',
         'bright-purple-border-trans': '#7878FA00',
         'dark-white-background': "#FFFFFF40",
+        'grey-date-text': '#9E9E9E',
         'white-muted': '#F3F5F9',
         'crypto-red': "#FE2264",
         'crypto-red-trans': "#FE226450",

@@ -76,7 +76,9 @@ const CoinConvertContainer = () => {
         price: any;
         date: string;
       }[] = [];
-      const placeHolderArr: ICoinData[] = [];
+      let updatedSellingCoinData = null;
+      let updatedBuyingCoinData = null;
+      const updatedPlaceHolderArr: ICoinData[] = [];
       const globalFetchResult = await globalCoinFetch.json();
       globalFetchResult.map((el: any) => {
         const item = {
@@ -88,15 +90,23 @@ const CoinConvertContainer = () => {
           date: formatDate(el.last_updated),
         };
         if (el.id === sellingCoin) {
-          setSellingCoinData(item);
+          updatedSellingCoinData = item;
         } else if (el.id === buyingCoin) {
-          setBuyingCoinData(item);
+          updatedBuyingCoinData = item;
           placeHolderCoinId = item.id;
         } else {
-          placeHolderArr.push(item);
+          updatedPlaceHolderArr.push(item);
         }
       });
-      setGlobalCoinList(placeHolderArr);
+
+      // Update state outside the map function
+      if (updatedSellingCoinData) {
+        setSellingCoinData(updatedSellingCoinData);
+      }
+      if (updatedBuyingCoinData) {
+        setBuyingCoinData(updatedBuyingCoinData);
+      }
+      setGlobalCoinList(updatedPlaceHolderArr);
 
       const priceChartData = await fetch(
         `https://api.coingecko.com/api/v3/coins/${placeHolderCoinId}/market_chart?vs_currency=${lowerCaseCurrency}&days=${dateSelect}`,

@@ -3,6 +3,8 @@ import currencySlice from "./currency/currencySlice";
 import coinSlice from "./coin/coinSlice";
 import dateSelectionSlice from "./dateSelect/dateSelectionSlice";
 import compareCoinSlice from "./compareCoin/compareCoinSlice";
+import pageSlice from "./currentPage/pageSlice";
+import marketChartSlice from "./marketChartData/marketChartSlice";
 
 export const makeStore = () => {
   return configureStore({
@@ -11,6 +13,8 @@ export const makeStore = () => {
       currentCoin: coinSlice,
       dateSelect: dateSelectionSlice,
       compareCoins: compareCoinSlice,
+      currentPage: pageSlice,
+      marketChartData: marketChartSlice, 
     }
   });
 };

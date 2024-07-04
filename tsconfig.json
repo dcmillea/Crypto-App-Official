@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/components/homeMain/carousel/carousel.jsx"
+    "src/app/components/homeMain/carousel/carousel.jsx",
+    "src/app/components/homePageTab/coinSearchBar.jsx"
   ],
   "exclude": ["node_modules"]
 }

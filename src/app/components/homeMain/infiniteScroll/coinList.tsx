@@ -182,7 +182,7 @@ const CoinList = () => {
       <div className="border border-orange-400">
         <CoinItemCategories />
         {coinList.map((el) => {
-          return <CoinItem key={el.name} data={el} />;
+          return <CoinItem key={Math.random() - Math.random()} data={el} />;
         })}
       </div>
     </div>

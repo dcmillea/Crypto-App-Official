@@ -4,15 +4,15 @@ import SmallScrollChart from "./smallScrollChart";
 
 const CoinItem: React.FC<{ data: any }> = ({ data }) => {
   return (
-    <div className="mb-3 mt-3 w-full rounded-md bg-purple-muted pb-5 pl-2 pr-2 pt-5">
+    <div className="mb-3 mt-3 w-full rounded-md bg-white pb-5 pl-2 pr-2 pt-5 dark:bg-purple-muted">
       <div className="grid w-full grid-cols-coinCard items-center gap-x-8 pl-2 pr-2">
-        <div className="">{data.number}</div>
+        <div className="text-boring-purple dark:text-white">{data.number}</div>
         <div className="flex h-12 items-center justify-start">
           <div className="mr-4">
             <Image src={data.icon} alt="icon" width={40} height={40} />
           </div>
           <div className="flex w-2/3 items-center justify-start">
-            <div className="flex w-full flex-col items-start justify-center">
+            <div className="flex w-full flex-col items-start justify-center text-boring-purple dark:text-white">
               <div>
                 {data.name.charAt(0).toUpperCase() + data.name.slice(1)}
               </div>
@@ -20,7 +20,9 @@ const CoinItem: React.FC<{ data: any }> = ({ data }) => {
             </div>
           </div>
         </div>
-        <div>${data.price.toFixed(2)}</div>
+        <div className="text-boring-purple dark:text-white">
+          ${data.price.toFixed(2)}
+        </div>
         <div
           className={`flex items-center justify-start ${data.isPrice1HrUp ? "text-crypto-green" : "text-crypto-red"}`}
         >
@@ -126,11 +128,17 @@ const CoinItem: React.FC<{ data: any }> = ({ data }) => {
             data.totalVolume24Hr !== undefined && (
               <div className="flex w-full flex-col items-center justify-center">
                 <div className="flex w-full items-center justify-between text-sm text-light-grey-chart-text">
-                  <div>{data.volume24Hr.toFixed(2)}B</div>
-                  <div>{data.totalVolume24Hr.toFixed(2)}B</div>
+                  <div
+                    className={`${data.isPrice7dUp ? "text-crypto-green" : "text-crypto-red"}`}
+                  >
+                    {data.volume24Hr.toFixed(2)}B
+                  </div>
+                  <div className="text-boring-purple dark:text-white">
+                    {data.totalVolume24Hr.toFixed(2)}B
+                  </div>
                 </div>
                 <div
-                  className={`relative h-2 ${data.isPrice7dUp ? "bg-crypto-green-trans" : "bg-crypto-red-trans"} w-full rounded-sm bg-white`}
+                  className={`relative h-2 ${data.isPrice7dUp ? "bg-crypto-green-trans" : "bg-crypto-red-trans"} w-full rounded-sm`}
                 >
                   <div
                     style={{ width: data.volumeBarString }}
@@ -145,11 +153,17 @@ const CoinItem: React.FC<{ data: any }> = ({ data }) => {
             data.totalCirculatingSupply !== undefined && (
               <div className="flex w-full flex-col items-center justify-center">
                 <div className="flex w-full items-center justify-between text-sm text-light-grey-chart-text">
-                  <div>{data.circulatingSupply.toFixed(2)}B</div>
-                  <div>{data.totalCirculatingSupply.toFixed(2)}B</div>
+                  <div
+                    className={`${data.isPrice7dUp ? "text-crypto-green" : "text-crypto-red"}`}
+                  >
+                    {data.circulatingSupply.toFixed(2)}B
+                  </div>
+                  <div className="text-boring-purple dark:text-white">
+                    {data.totalCirculatingSupply.toFixed(2)}B
+                  </div>
                 </div>
                 <div
-                  className={`relative h-2 ${data.isPrice7dUp ? "bg-crypto-green-trans" : "bg-crypto-red-trans"} w-full rounded-sm bg-white`}
+                  className={`relative h-2 ${data.isPrice7dUp ? "bg-crypto-green-trans" : "bg-crypto-red-trans"} w-full rounded-sm`}
                 >
                   <div
                     style={{ width: data.circulatingBarString }}

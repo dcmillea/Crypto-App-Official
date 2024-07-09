@@ -72,6 +72,7 @@ const CoinList = () => {
         headers: {
           accept: "application/json",
           "x-cg-demo-api-key": "CG-M2orPqV361oYPRkZk1xRkWz3",
+          mode: "no-cors",
         },
       };
       try {
@@ -179,7 +180,7 @@ const CoinList = () => {
 
   return (
     <div className="mt-4 w-full">
-      <div className="border border-orange-400">
+      <div>
         <CoinItemCategories />
         {coinList.map((el) => {
           return <CoinItem key={Math.random() - Math.random()} data={el} />;

@@ -75,6 +75,7 @@ const ChartContainer = () => {
         headers: {
           accept: "application/json",
           "x-cg-demo-api-key": "CG-M2orPqV361oYPRkZk1xRkWz3",
+          mode: "no-cors",
         },
       };
       if (isComparing) {
@@ -263,11 +264,11 @@ const ChartContainer = () => {
   }, [currency, currentCoin, dateSelect, comparedCoinsArr]);
 
   return (
-    <div className="flex h-96 w-full border border-orange-400">
-      <div className="mr-3 h-full w-full border-2 border-blue-200">
+    <div className="flex h-96 w-full">
+      <div className="mr-3 h-full w-full">
         <ChartContent data={priceDataSet.data} />
       </div>
-      <div className="ml-3 h-full w-full border-2 border-blue-200">
+      <div className="ml-3 h-full w-full">
         <VolumeChart data={volumeDataSet.data} />
       </div>
     </div>

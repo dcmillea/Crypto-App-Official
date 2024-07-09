@@ -49,8 +49,8 @@ const DateSelection = () => {
   };
 
   return (
-    <div className="flex h-28 w-full items-center justify-start border border-orange-500">
-      <div className="flex h-12 w-5/12 items-center justify-evenly border border-green-500 bg-darker-white-40 dark:bg-boring-purple">
+    <div className="flex h-28 w-full items-center justify-start">
+      <div className="flex h-12 w-5/12 items-center justify-evenly bg-darker-white-40 dark:bg-boring-purple">
         {dateList.map((el) => (
           <DateItem
             key={el.text}

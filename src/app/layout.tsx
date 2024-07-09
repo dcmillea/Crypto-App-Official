@@ -39,8 +39,8 @@ export default function RootLayout({
             <Providers>
               <PrimaryNavbar />
               <MobileNavBar />
-              <div className="flex items-center justify-center border-2 border-lime-300 bg-white-muted bg-no-repeat dark:bg-main-dark-purple">
-                <div className="w-11/12 max-w-screen-xl flex-col items-center justify-start border-2 border-white">
+              <div className="flex items-center justify-center bg-white-muted bg-no-repeat dark:bg-main-dark-purple">
+                <div className="w-11/12 max-w-screen-xl flex-col items-center justify-start">
                   {children}
                 </div>
               </div>

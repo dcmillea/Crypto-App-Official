@@ -9,8 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        // 'coinCard': '20px 300px 100px 75px 75px 75px 100px 100px 100px',
         'coinCard': '1% 17% 8% 5% 5% 5% 14% 14% 14%',
+        'coinPageCols': '1fr 1fr 2fr',
+      },
+      gridTemplateRows: {
+        'coinPageRows': '4fr 1fr 2fr 1fr 1fr 1fr'
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -24,6 +27,7 @@ const config: Config = {
         'light-grey-chart-text': '#B9B9BA',
         'bright-puprle': '#7c7cf2',
         'light-purple': "#6161D650",
+        'weird-purple': '#2C2C4A',
         'light-purple-full': '#6161D6',
         'light-purple-text': '#353570',
         'text-currency-grey': '#42428680',
@@ -57,7 +61,8 @@ const config: Config = {
         'border-small': '0.5px'
       },
       boxShadow: {
-        'on-top': '0px 0px #FFFFFF50 '
+        'on-top': '0px 0px #FFFFFF50 ',
+        'omni': '0 0 15px rgba(0, 0, 0, 0.2)',
       },
       dropShadow: {
         'md-select': '0px 0px 20px 8px #6161D6',

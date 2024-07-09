@@ -187,7 +187,7 @@ const CarouselContainer: React.FC = () => {
   return (
     <div className="mb-6 mt-6 h-28 w-full">
       <div className="h-full w-full">
-        <div className="w-full border">
+        <div className="w-full">
           <Slider className="w-full" {...settings}>
             {top20Coins.map((el) => (
               <div key={el.name} className="ml-2 mr-2">

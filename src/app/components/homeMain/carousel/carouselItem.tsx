@@ -126,7 +126,7 @@ const CarouselItem: React.FC<IComponentProps> = ({
                       )}
                     </div>
                     <div
-                      className={`text-sm ${data.isMarketUp ? "text-crypto-green-2" : "text-crypto-red"}`}
+                      className={`text-sm ${data.isMarketUp ? "text-crypto-green-2 dark:text-crypto-green" : "text-crypto-red"}`}
                     >
                       {data.percentChange} %
                     </div>

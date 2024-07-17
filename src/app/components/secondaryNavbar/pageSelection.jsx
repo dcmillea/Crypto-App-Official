@@ -29,42 +29,51 @@ const PageSelection = () => {
   };
   return (
     <div className="mr-8 flex w-full items-center justify-between">
-      <Link href="/" className="hidden dark:block">
-        <PageSwitch
-          handlePageSwitch={handlePageSwitch}
-          isSelected={isHomePageSelected}
-          imgSelected={darkHomeIconSelected}
-          imgUnSelected={darkHomeIconUnSelected}
-          text="Home"
-        />
-      </Link>
-      <Link href="/" className="block dark:hidden">
-        <PageSwitch
-          handlePageSwitch={handlePageSwitch}
-          isSelected={isHomePageSelected}
-          imgSelected={lightHomeIconSelected}
-          imgUnSelected={lightHomeIconUnSelected}
-          text="Home"
-        />
-      </Link>
-      <Link href="/portfolio" className="hidden dark:block">
-        <PageSwitch
-          handlePageSwitch={handlePageSwitch}
-          isSelected={!isHomePageSelected}
-          imgSelected={portfolioIconSelected}
-          imgUnSelected={portfolioIcon}
-          text="Portfolio"
-        />
-      </Link>
-      <Link href="/portfolio" className="block dark:hidden">
-        <PageSwitch
-          handlePageSwitch={handlePageSwitch}
-          isSelected={!isHomePageSelected}
-          imgSelected={lighPortfolioIconSelected}
-          imgUnSelected={lighPortfolioIconUnSelected}
-          text="Portfolio"
-        />
-      </Link>
+      <div>
+        <Link href="/" className="hidden dark:block">
+          <PageSwitch
+            handlePageSwitch={handlePageSwitch}
+            isSelected={isHomePageSelected}
+            imgSelected={darkHomeIconSelected}
+            imgUnSelected={darkHomeIconUnSelected}
+            text="Home"
+          />
+        </Link>
+        <Link href="/" className="block dark:hidden">
+          <PageSwitch
+            handlePageSwitch={handlePageSwitch}
+            isSelected={isHomePageSelected}
+            imgSelected={lightHomeIconSelected}
+            imgUnSelected={lightHomeIconUnSelected}
+            text="Home"
+          />
+        </Link>
+      </div>
+      <div>
+        <Link
+          // eslint-disable-next-line no-console
+          onClick={() => console.log("clicked")}
+          href="/portfolio"
+          className="hidden dark:block"
+        >
+          <PageSwitch
+            handlePageSwitch={handlePageSwitch}
+            isSelected={!isHomePageSelected}
+            imgSelected={portfolioIconSelected}
+            imgUnSelected={portfolioIcon}
+            text="Portfolio"
+          />
+        </Link>
+        <Link href="/portfolio" className="block dark:hidden">
+          <PageSwitch
+            handlePageSwitch={handlePageSwitch}
+            isSelected={!isHomePageSelected}
+            imgSelected={lighPortfolioIconSelected}
+            imgUnSelected={lighPortfolioIconUnSelected}
+            text="Portfolio"
+          />
+        </Link>
+      </div>
     </div>
   );
 };

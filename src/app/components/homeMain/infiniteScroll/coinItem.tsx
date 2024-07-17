@@ -24,7 +24,7 @@ const CoinItem: React.FC<{ data: any }> = ({ data }) => {
           ${data.price.toFixed(2)}
         </div>
         <div
-          className={`flex items-center justify-start ${data.isPrice1HrUp ? "text-crypto-green" : "text-crypto-red"}`}
+          className={`flex items-center justify-start ${data.isPrice1HrUp ? "text-crypto-green-2 dark:text-crypto-green" : "text-crypto-red"}`}
         >
           <div>
             {data.isPrice1HrUp ? (
@@ -58,7 +58,7 @@ const CoinItem: React.FC<{ data: any }> = ({ data }) => {
           </div>
         </div>
         <div
-          className={`flex items-center justify-start ${data.isPrice24HrUp ? "text-crypto-green" : "text-crypto-red"}`}
+          className={`flex items-center justify-start ${data.isPrice24HrUp ? "text-crypto-green-2 dark:text-crypto-green" : "text-crypto-red"}`}
         >
           <div>
             {data.isPrice24HrUp ? (
@@ -92,7 +92,7 @@ const CoinItem: React.FC<{ data: any }> = ({ data }) => {
           </div>
         </div>
         <div
-          className={`flex items-center justify-start ${data.isPrice7dUp ? "text-crypto-green" : "text-crypto-red"}`}
+          className={`flex items-center justify-start ${data.isPrice7dUp ? "text-crypto-green-2 dark:text-crypto-green" : "text-crypto-red"}`}
         >
           <div>
             {data.isPrice7dUp ? (
@@ -129,7 +129,7 @@ const CoinItem: React.FC<{ data: any }> = ({ data }) => {
               <div className="flex w-full flex-col items-center justify-center">
                 <div className="flex w-full items-center justify-between text-sm text-light-grey-chart-text">
                   <div
-                    className={`${data.isPrice7dUp ? "text-crypto-green" : "text-crypto-red"}`}
+                    className={`${data.isPrice7dUp ? "text-crypto-green-2 dark:text-crypto-green" : "text-crypto-red"}`}
                   >
                     {data.volume24Hr.toFixed(2)}B
                   </div>
@@ -142,7 +142,7 @@ const CoinItem: React.FC<{ data: any }> = ({ data }) => {
                 >
                   <div
                     style={{ width: data.volumeBarString }}
-                    className={`absolute left-0 top-0 h-full rounded-sm ${data.isPrice7dUp ? "bg-crypto-green" : "bg-crypto-red"}`}
+                    className={`absolute left-0 top-0 h-full rounded-sm ${data.isPrice7dUp ? "bg-crypto-green-2 dark:bg-crypto-green" : "bg-crypto-red"}`}
                   ></div>
                 </div>
               </div>
@@ -154,7 +154,7 @@ const CoinItem: React.FC<{ data: any }> = ({ data }) => {
               <div className="flex w-full flex-col items-center justify-center">
                 <div className="flex w-full items-center justify-between text-sm text-light-grey-chart-text">
                   <div
-                    className={`${data.isPrice7dUp ? "text-crypto-green" : "text-crypto-red"}`}
+                    className={`${data.isPrice7dUp ? "text-crypto-green-2 dark:text-crypto-green" : "text-crypto-red"}`}
                   >
                     {data.circulatingSupply.toFixed(2)}B
                   </div>
@@ -167,7 +167,7 @@ const CoinItem: React.FC<{ data: any }> = ({ data }) => {
                 >
                   <div
                     style={{ width: data.circulatingBarString }}
-                    className={`absolute left-0 top-0 h-full rounded-sm ${data.isPrice7dUp ? "bg-crypto-green" : "bg-crypto-red"}`}
+                    className={`absolute left-0 top-0 h-full rounded-sm ${data.isPrice7dUp ? "bg-crypto-green-2 dark:bg-crypto-green" : "bg-crypto-red"}`}
                   ></div>
                 </div>
               </div>

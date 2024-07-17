@@ -5,6 +5,7 @@ import dateSelectionSlice from "./dateSelect/dateSelectionSlice";
 import compareCoinSlice from "./compareCoin/compareCoinSlice";
 import pageSlice from "./currentPage/pageSlice";
 import marketChartSlice from "./marketChartData/marketChartSlice";
+import assetSlice from "./assets/assetSlice";
 
 export const makeStore = () => {
   return configureStore({
@@ -14,7 +15,8 @@ export const makeStore = () => {
       dateSelect: dateSelectionSlice,
       compareCoins: compareCoinSlice,
       currentPage: pageSlice,
-      marketChartData: marketChartSlice, 
+      marketChartData: marketChartSlice,
+      portfolioCoins: assetSlice, 
     }
   });
 };

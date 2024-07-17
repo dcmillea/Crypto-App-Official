@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import CoinItem from "./coinItem";
 import CoinItemCategories from "./CoinItemCategory";
+import Link from "next/link";
 
 // Redux
 import { useSelector } from "react-redux";
@@ -76,7 +77,7 @@ const CoinList = () => {
         },
       };
       try {
-        // Perform your API call or data fetching logic
+        // Perform your API call
         const response = await fetch(
           `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=50&page=${page}&sparkline=true&price_change_percentage=1h&precision=2`,
           options,
@@ -183,7 +184,14 @@ const CoinList = () => {
       <div>
         <CoinItemCategories />
         {coinList.map((el) => {
-          return <CoinItem key={Math.random() - Math.random()} data={el} />;
+          return (
+            <Link
+              key={Math.random() - Math.random()}
+              href={`/coinPage/${el.name}`}
+            >
+              <CoinItem data={el} />
+            </Link>
+          );
         })}
       </div>
     </div>

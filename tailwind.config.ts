@@ -22,6 +22,7 @@ const config: Config = {
       },
       colors: {
         'primary-purple': "#1E1932",
+        'primary-purple-50': "#1E193280",
         'main-dark-purple': "#13121A",
         'grey-nav-text': "#D1D1D1",
         'light-grey-chart-text': '#B9B9BA',
@@ -56,6 +57,7 @@ const config: Config = {
         'date-selection-grey': '#A7A7CC',
         'date-selection-white': '#E4E4F0',
         'date-selection-black': '#181825',
+        'greyish-bg': "#2D2D51",
       },
       borderWidth: {
         'border-small': '0.5px'

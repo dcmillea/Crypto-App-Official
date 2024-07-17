@@ -149,7 +149,7 @@ export default function Page({ params }: { params: { coinId: string } }) {
   };
 
   return (
-    <div className="flex w-full flex-col items-center justify-start border-2 border-white text-light-purple-text dark:text-white">
+    <div className="flex w-full flex-col items-center justify-start text-light-purple-text dark:text-white">
       <div className="mt-40 flex w-full items-center justify-start text-2xl">
         <div className="flex w-2/6 cursor-pointer items-center justify-start">
           <div className="hidden dark:block">

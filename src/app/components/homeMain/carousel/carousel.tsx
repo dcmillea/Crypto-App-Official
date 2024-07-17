@@ -103,6 +103,7 @@ const CarouselContainer: React.FC = () => {
         headers: {
           accept: "application/json",
           "x-cg-demo-api-key": "CG-M2orPqV361oYPRkZk1xRkWz3",
+          mode: "no-cors",
         },
       };
       setIsLoading(true);
